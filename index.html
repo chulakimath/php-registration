@@ -1,0 +1,122 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link rel="stylesheet" href="./src/output.css">
+</head>
+
+<body class="bg-slate-900 h-100vh w-full" onload="setMinDate()">
+    <div class="flex justify-center">
+        <form class="bg-slate-100/60 p-4 mt-4 mb-4 rounded-md w-[400px]" id="myform" action="./src/register.php"
+            method="post">
+            <div>
+                <div class="">
+                    <label class="ml-1 text-black font-medium">Name</label><span id="nameSpan"
+                        class="ml-4 w-fit text-red-600">*</span>
+                </div>
+                <input id="name"
+                    class="w-full focus:outline-none mb-2 h-8  placeholder:text-black p-2 rounded-[5px] shadow  focus:shadow-black"
+                    type="text" name="name" placeholder="Enter your name" />
+            </div>
+            <div>
+                <label class="text-black font-medium ml-1">DOB</label><span class="dob ml-4 text-red-600">*</span>
+                <input id="dob"
+                    class="focus:outline-none mb-2 h-8 w-full placeholder:text-black p-2 rounded-[5px] shadow  focus:shadow-black"
+                    type="date" name="dob" />
+            </div>
+            <div>
+                <label class="ml-1 text-black font-medium">Age</label><span id="ageSpan" class="gender ml-4 text-red-600">*</span>
+                <input id="age"
+                    class="focus:outline-none w-full mb-2 h-8  placeholder:text-black p-2 rounded-[5px] shadow  focus:shadow-black"
+                    type="text" name="age" placeholder="Age" disabled />
+            </div>
+            <div class="mb-2">
+                <label class="mb-1 ml-1 text-black font-medium">Gender</label><span id="genderSpan" class="gender ml-4 text-red-600">*</span>
+                <div class="w-full">
+                    <input class="mx-1" type="radio" name="gender" value="male"> <span>Male</span>
+                    <input class="mx-1" type="radio" name="gender" value="female"> <span>Female</span>
+                    <input class="mx-1" type="radio" name="gender" value="others"> <span>Others</span>
+                </div>
+            </div>
+            <div>
+                <label class="ml-1 text-black font-medium">Email</label><span id="emailSpan" class="email ml-4 text-red-600">*</span>
+                <input id="email"
+                    class="w-full focus:outline-none mb-2 h-8  placeholder:text-black p-2 rounded-[5px] shadow  focus:shadow-black"
+                    type="email" name="email" placeholder="Email" />
+            </div>
+            <div>
+                <label class="ml-1 text-black font-medium">Password</label><span id="passwordSpan" 
+                    class="password ml-4 text-red-600">*</span>
+                <input id="password"
+                    class="w-full focus:outline-none mb-2 h-8  placeholder:text-black p-2 rounded-[5px] shadow  focus:shadow-black"
+                    type="password" name="password" placeholder="password" />
+            </div>
+            <div>
+                <label class="ml-1 text-black font-medium">Confirm Password</label><span id="confirmSpan" 
+                    class="confirm ml-4 text-red-600">*</span>
+                <input id="confirm"
+                    class="w-full focus:outline-none mb-2 h-8  placeholder:text-black p-2 rounded-[5px] shadow  focus:shadow-black"
+                    type="password" name="confirm" placeholder="Confirm password" />
+            </div>
+            <div>
+                <label class="ml-1 text-black font-medium">Phone Number</label><span id="phoneSpan" 
+                    class="phone ml-4 text-red-600">*</span>
+                <input id="phone"
+                    class="w-full focus:outline-none mb-2 h-8  placeholder:text-black p-2 rounded-[5px] shadow  focus:shadow-black"
+                    type="text" name="phone" placeholder="Phone Number" />
+            </div>
+            <div>
+                <label class="ml-1 text-black font-medium">Address</label><span id="addressSpan" 
+                    class="address ml-4 text-red-600">*</span>
+                <textarea id="address"
+                    class="w-full focus:outline-none mb-2 h-8  placeholder:text-black p-2 rounded-[5px] shadow  focus:shadow-black"
+                    name="address" placeholder="Address" rows="4"></textarea>
+            </div>
+            <div class="mb-2">
+                <label class="ml-1 text-black font-medium">State</label><span id="stateSpan" class="state ml-4 text-red-600">*</span>
+                <select id="state" name="state" class="w-full mv-2 h-8 rounded-[5px] cursor-pointer">
+                    <option value="">--select--</option>
+                    <option value="karnataka">karnataka</option>
+                    <option value="assam">assam</option>
+                </select>
+            </div>
+            <div class="mb-2">
+                <label class="mb-1 ml-1 text-black font-medium">Courses</label><span id="courseSpan" 
+                    class="courses ml-4 text-red-600">*</span>
+                <div class="w-full">
+                    <input class="mx-1" type="checkbox" name="courses[]" value="react"> <span>react</span>
+                    <input class="mx-1" type="checkbox" name="courses[]" value="php"> <span>php</span>
+                    <input class="mx-1" type="checkbox" name="courses[]" value="javascript"> <span>javascript</span>
+                </div>
+            </div>
+            <div class="mb-2">
+                <label class="mb-1 ml-1 text-black font-medium">Hobbies</label>
+                <div class="w-full">
+                    <input class="mx-1" type="checkbox" name="hobbies[]" value="music"> <span>music</span>
+                    <input class="mx-1" type="checkbox" name="hobbies[]" value="sports"> <span>sports</span>
+                    <input class="mx-1" type="checkbox" name="hobbies[]" value="travel"> <span>travel</span>
+                </div>
+            </div>
+            <div class="mb-2 border border-white p-2">
+                <label class="mb-1 ml-1 text-black font-medium">choose image</label>
+                <div>
+                    <input id="file"
+                        class="cursor-pointer border-none rounded-[5px] border border-white appearance-none"
+                        name="image" type="file">
+                </div>
+            </div>
+            <div class="mb-2 flex justify-center gap-4">
+                <input class="bg-white py-1 px-4 rounded-[5px] cursor-pointer" type="submit" value="submit"
+                    name="submit" id="submit">
+                <input class="bg-white py-1 px-4 rounded-[5px] cursor-pointer" type="reset" value="reset" name="Reset">
+            </div>
+
+        </form>
+    </div>
+    <script src="./src/index.js"></script>
+</body>
+
+</html>
